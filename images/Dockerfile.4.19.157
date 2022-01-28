@@ -1,6 +1,0 @@
-FROM debian:stretch
-RUN apt update && apt install -y rpm2cpio cpio curl
-ADD https://svl-artifactory.juniper.net/artifactory//cn2-static-dev/cn2/kernels/minikube/all/linux-4.19.157.tar.gz /tmp/kernel/4.19.157/linux-4.19.157.tar.gz
-ADD https://raw.githubusercontent.com/kubernetes/minikube/v1.17.1/deploy/iso/minikube-iso/board/coreos/minikube/linux_defconfig /tmp/kernel/4.19.157/linux_defconfig
-RUN tar zxvf -C https://svl-artifactory.juniper.net/artifactory//cn2-static-dev/cn2/kernels/minikube/all/linux-4.19.157.tar.gz /tmp/kernel/4.19.157/linux-4.19.157.tar.gz
-RUN echo /tmp/kernel/4.19.157/linux-4.19.157 > /kernelpath

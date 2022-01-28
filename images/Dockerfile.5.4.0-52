@@ -1,6 +1,0 @@
-FROM debian:stretch
-RUN apt update && apt install -y rpm2cpio cpio curl
-ADD https://svl-artifactory.juniper.net/artifactory//cn2-static-dev/cn2/kernels/ubuntu/20.04.1/linux-headers-5.4.0-52_5.4.0-52.57_all.deb /tmp/kernel/5.4.0-52/linux-headers-5.4.0-52_5.4.0-52.57_all.deb
-ADD https://svl-artifactory.juniper.net/artifactory//cn2-static-dev/cn2/kernels/ubuntu/20.04.1/linux-headers-5.4.0-52-generic_5.4.0-52.57_amd64.deb /tmp/kernel/5.4.0-52/linux-headers-5.4.0-52-generic_5.4.0-52.57_amd64.deb
-RUN dpkg -i /tmp/kernel/5.4.0-52/linux-headers-5.4.0-52-generic_5.4.0-52.57_amd64.deb /tmp/kernel/5.4.0-52/linux-headers-5.4.0-52_5.4.0-52.57_all.deb
-RUN echo /usr/src/linux-headers-5.4.0-52-generic > /kernelpath

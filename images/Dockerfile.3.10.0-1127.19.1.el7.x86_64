@@ -1,5 +1,0 @@
-FROM debian:stretch
-RUN apt update && apt install -y rpm2cpio cpio curl
-ADD https://svl-artifactory.juniper.net/artifactory//cn2-static-dev/cn2/kernels/centos/7.8.2003/kernel-devel-3.10.0-1127.19.1.el7.x86_64.rpm /tmp/kernel/3.10.0-1127.19.1.el7.x86_64/kernel-devel-3.10.0-1127.19.1.el7.x86_64.rpm
-RUN rpm2cpio /tmp/kernel/3.10.0-1127.19.1.el7.x86_64/kernel-devel-3.10.0-1127.19.1.el7.x86_64.rpm | cpio -idmv
-RUN echo /tmp/kernel/3.10.0-1127.19.1.el7.x86_64/usr/src/kernels/3.10.0-1127.19.1.el7.x86_64 > /kernelpath
