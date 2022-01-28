@@ -1,0 +1,2 @@
+BAZELISK_BASE_URL= https://svl-artifactory.juniper.net/artifactory/atom-static-dev/cn2/bazel/releases/download/
+USE_BAZEL_VERSION = 4.0.0

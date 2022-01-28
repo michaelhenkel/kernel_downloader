@@ -1,0 +1,11 @@
+ARG REGISTRY=svl-artifactory.juniper.net/atom-docker/cn2
+ARG TAG=distroless
+FROM ${REGISTRY}/vrouter-kernel-modules:${TAG} AS modules
+
+ARG REGISTRY=svl-artifactory.juniper.net/atom-docker/cn2
+ARG TAG=distroless
+FROM ${REGISTRY}/busybox:${TAG}
+ADD compiled_modules.sh /
+COPY --from=modules /results /results
+CMD ["/compiled_modules.sh"]
+

@@ -1,0 +1,86 @@
+# kernel list definitions
+artifactoryRepo: cn2-static-dev/cn2/kernels/
+distributions:
+- name: ubuntu
+  parser:
+  - linux-headers-(.+)_.+_all.deb
+  - linux-headers-(.+)-generic_.+_amd64.deb
+  versions:
+  - name: 20.04.1
+    minVersion: 5.4.0-42
+    maxVersion: 5.5.0-0.0
+    baseURL: https://mirrors.kernel.org/ubuntu/pool/main/l/linux
+    artifactoryCache: true
+  #- name: 20.04.3
+  #  minVersion: 5.11.0-47
+  #  maxVersion: 5.12.0-0.0
+  #  baseURL: https://mirrors.kernel.org/ubuntu/pool/main/l/linux
+  #  artifactoryCache: true
+  requiredVersions:
+    - 5.4.0-81-generic
+- name: centos
+  parser:
+  - kernel-devel-(.+).(el\w+\.x86_64).rpm
+  versions:
+  - name: 7
+    minVersion: 3.10.0-1160
+    maxVersion: 3.10.0-1160
+    baseURL: https://mirrors.edge.kernel.org/centos/7/os/x86_64/Packages/
+    artifactoryCache: true
+  - name: 7.8.2003
+    minVersion: 3.10.0-1127.19.1
+    maxVersion: 3.10.0-1127.19.1
+    baseURL: https://vault.centos.org/7.8.2003/updates/x86_64/Packages
+    artifactoryCache: true
+  - name: 8.3.2011
+    minVersion: 4.18.0-240.1.1
+    maxVersion: 4.18.0-240.22.1
+    baseURL: https://vault.centos.org/8.3.2011/BaseOS/x86_64/os/Packages
+    artifactoryCache: true
+  - name: 8.4.2105
+    minVersion: 4.18.0-305.3.1
+    maxVersion: 4.19.0-0.0.0
+    baseURL: https://vault.centos.org/8.4.2105/BaseOS/x86_64/os/Packages
+    artifactoryCache: true
+  - name: 8.5.2111
+    minVersion: 4.18.0-348
+    maxVersion: 4.19.0-0.0.0
+    baseURL: https://vault.centos.org/8.5.2111/BaseOS/x86_64/os/Packages
+    artifactoryCache: true
+  requiredVersions:
+    - 3.10.0-1160.el7.x86_64
+    - 3.10.0-1127.19.1.el7.x86_64
+    - 4.18.0-305.3.1.el8.x86_64
+    - 4.18.0-305.19.1.el8_4.x86_64
+    - 4.18.0-305.25.1.el8_4.x86_64
+- name: rhel
+  parser:
+  - kernel-devel-(.+).(el\w+\.x86_64).rpm
+  versions:
+  - name: 8
+    minVersion: 4.18.0-305.28.1
+    maxVersion: 4.20.0-0.0.0
+    rhRepository: rhel-8-for-x86_64-baseos-eus-rpms
+    artifactoryCache: true
+  requiredVersions:
+    - 4.18.0-305.28.1.el8_4.x86_64
+    - 4.18.0-305.30.1.el8_4.x86_64
+- name: minikube
+  parser:
+  - v((\d+).(\d+).(\d+))
+  versions:
+  - name: all
+    minVersion: v1.16.0
+    maxVersion: v1.30.0
+    baseURL: https://github.com/kubernetes/minikube/tags
+    kernelURL: https://cdn.kernel.org/pub/linux/kernel/v4.x
+    defconfigURL: https://raw.githubusercontent.com/kubernetes/minikube/v%s/deploy/iso/minikube-iso/configs/minikube_defconfig
+    kernelDeconfigURL: https://raw.githubusercontent.com/kubernetes/minikube/v%s/deploy/iso/minikube-iso/board/coreos/minikube/linux_defconfig
+    artifactoryCache: true
+    customConfigs:
+      - kernelName: 4.19.171
+        localVersionSuffix: -contrail
+        properties:
+          CONFIG_VLAN_8021Q: y
+  requiredVersions:
+    - 4.19.171-contrail
